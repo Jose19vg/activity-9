@@ -11,6 +11,7 @@ Route::get('/', function () {
 
 // Grupo de rutas protegidas (solo para usuarios autenticados)
 Route::middleware(['auth'])->group(function () {
+    
     // Dashboard accesible solo para usuarios autenticados
     Route::get('/dashboard', function () {
         return view('dashboard');
@@ -19,7 +20,7 @@ Route::middleware(['auth'])->group(function () {
     // Cerrar sesión
     Route::post('/logout', function () {
         Auth::logout();
-        return redirect('/');
+        return redirect('/');  // Redirecciona a la landingpage tras cerrar sesión
     })->name('logout');
 });
 
